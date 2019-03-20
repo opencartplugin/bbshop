@@ -37,6 +37,6 @@ class AppView extends View
     public function initialize()
     {
         $this->loadHelper('Form', ['className' => 'AdminLTE.Form']);
+        //$this->Form->setTemplates(['dateWidget' => '<input type="text" class="datetime" name="{{name}}"{{attrs}}/>']); 
     }
-
 }

@@ -16,7 +16,6 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
-use Cake\Core\Configure;
 
 /**
  * Application Controller
@@ -46,6 +45,24 @@ class AppController extends Controller
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            // Added this line
+            'authorize'=> 'Controller',
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'username',
+                        'password' => 'password'
+                    ]
+                ]
+            ],
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+            // If unauthorized, return them to page they were just on
+            'unauthorizedRedirect' => $this->referer()
+        ]);
 
         /*
          * Enable the following component for recommended CakePHP security settings.
@@ -57,6 +74,35 @@ class AppController extends Controller
     {
         $this->viewBuilder()->setTheme('AdminLTE');
         $this->viewBuilder()->setClassName('AdminLTE.AdminLTE');
-   
+        
+    
     }    
+
+    public function beforeFilter(Event $event) 
+    {   
+        parent::beforeFilter($event);
+    }
+
+    public function isAuthorized($user = null)
+    {
+        return true;
+        $userId = $this->Auth->user('id');
+        $users = TableRegistry::getTableLocator()->get('Users');
+        $roles = TableRegistry::getTableLocator()->get('Roles');
+        $user = $users->find()->where(['id'=>$userId])->contain(['Roles'])->first();
+        $action = Router::getRequest()->params;
+        $res = false;
+        foreach ($user->roles as $r) {
+            $role = $roles->find()->where(['id'=>$r->id])->contain(['Actions'=>['Controllers']])->first();
+            foreach ($role->actions as $act) {
+                if ($action['controller'] == $act->controller->cname && $action['action'] == $act->aname) {
+                    $res = true;
+                    break;
+                }
+    
+            }
+        }
+        return $res;
+    }
+
 }
