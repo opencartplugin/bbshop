@@ -6,7 +6,7 @@
 ?>
 <?= $this->element('Form/nav-top', [
         'title' => 'Controller',
-        'links' => [['class'=>'fa fa-list', 'title'=>'Daftar Controller', 'action'=>'index', 'method'=>'link']
+        'links' => [['class'=>'fa fa-list', 'title'=>'Controller List', 'action'=>'index', 'method'=>'link']
     ]]
 );?>
 
@@ -16,13 +16,13 @@
         <div class="col-md-12">
             <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Tambah Data</h3>
+                <h3 class="box-title">Add Controller</h3>
             </div>
             <?= $this->Form->create($controller) ?>
                 <fieldset>
                 <div class="box-body">
                 <div class="form-group">
-                    <?= $this->Form->control('cname',['label'=>'Nama Controller']) ?>
+                    <?= $this->Form->control('cname',['label'=>'Controller Name']) ?>
                 </div>
                 </fieldset>
                 <div class="box-footer">

@@ -58,10 +58,10 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="<?php echo $this->Url->build('/users/index'); ?>"><i class="fa fa-check-circle-o"></i> Daftar User</a></li>
-            <li><a href="<?php echo $this->Url->build('/roles/index'); ?>"><i class="fa fa-check-circle-o"></i> Daftar Role</a></li>
-            <li><a href="<?php echo $this->Url->build('/actions/index'); ?>"><i class="fa fa-check-circle-o"></i> Daftar Action</a></li>
-            <li><a href="<?php echo $this->Url->build('/controllers/index'); ?>"><i class="fa fa-check-circle-o"></i> Daftar Controller</a></li>
+            <li><a href="<?php echo $this->Url->build('/users/index'); ?>"><i class="fa fa-check-circle-o"></i> Employee List</a></li>
+            <li><a href="<?php echo $this->Url->build('/roles/index'); ?>"><i class="fa fa-check-circle-o"></i> Role List</a></li>
+            <li><a href="<?php echo $this->Url->build('/actions/index'); ?>"><i class="fa fa-check-circle-o"></i> Action List</a></li>
+            <li><a href="<?php echo $this->Url->build('/controllers/index'); ?>"><i class="fa fa-check-circle-o"></i> Controller List</a></li>
         </ul>
     </li>
 

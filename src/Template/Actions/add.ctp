@@ -6,7 +6,7 @@
 ?>
 <?= $this->element('Form/nav-top', [
         'title' => 'Action',
-        'links' => [['class'=>'fa fa-list', 'title'=>'Daftar Action', 'action'=>'index', 'method'=>'link'],
+        'links' => [['class'=>'fa fa-list', 'title'=>'Action List', 'action'=>'index', 'method'=>'link'],
     ]]
 );?>
 
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="form-group">
-                    <?= $this->Form->control('aname',['label'=>'Nama Action']) ?>
+                    <?= $this->Form->control('aname',['label'=>'Action Name']) ?>
                 </div>
                 </fieldset>
                 <div class="box-footer">

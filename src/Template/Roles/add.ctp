@@ -8,7 +8,7 @@
 <!-- Content Header (Page header) -->
 <?= $this->element('Form/nav-top', [
         'title' => 'Role',
-        'links' => [['class'=>'fa fa-list', 'title'=>'Daftar Role', 'action'=>'index','method'=>'link']
+        'links' => [['class'=>'fa fa-list', 'title'=>'Role List', 'action'=>'index','method'=>'link']
         ]]);?>
 
 <!-- Main content -->
@@ -17,13 +17,13 @@
         <div class="col-md-12">
             <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Tambah Roles</h3>
+                <h3 class="box-title">Add Roles</h3>
             </div>
             <?= $this->Form->create($role) ?>
                 <fieldset>
                 <div class="box-body">
                     <div class="form-group">
-                        <?= $this->Form->control('rolename',['label'=>'Nama Role', 'class'=>'form-control']);?>
+                        <?= $this->Form->control('rolename',['label'=>'Role Name', 'class'=>'form-control']);?>
                     </div>
                     <div class="form-group">
                         <?= $this->Form->control('actions._ids', ['options' => $actions, 'empty' => false, 'label'=>'Controller/Action','class'=>'form-control select2', 'multiple'=>'multiple', 'style'=>"width: 100%;"]);?>

@@ -1,12 +1,14 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Role[]|\Cake\Collection\CollectionInterface $roles
+ * @var \App\Model\Entity\Service[]|\Cake\Collection\CollectionInterface $services
  */
 ?>
+
+
 <?= $this->element('Form/nav-top', [
-        'title' => 'Role',
-        'links' => [['class'=>'fa fa-plus', 'title'=>'Add Role', 'action'=>'add','method'=>'link']],
+        'title' => 'Services',
+        'links' => [['class'=>'fa fa-plus', 'title'=>'Add Service', 'action'=>'add','method'=>'link']],
     ]
 );?>
 
@@ -17,7 +19,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                <h3 class="box-title">Role List</h3>
+                <h3 class="box-title">Service List</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
@@ -25,18 +27,21 @@
                     <thead>
                     <tr>
                         <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('rolename','Role Name') ?></th>
+                        <th scope="col"><?= $this->Paginator->sort('Service Name') ?></th>
+                        <th scope="col"><?= $this->Paginator->sort('price') ?></th>
                         <th scope="col" class="actions"><?= __('Actions') ?></th>
                     </tr>
+
                     </thead>
                     <tbody>
-                        <?php foreach ($roles as $role): ?>
+                        <?php foreach ($services as $service): ?>
                         <tr>
-                            <td><?= $this->Number->format($role->id) ?></td>
-                            <td><?= h($role->rolename) ?></td>
+                            <td><?= $this->Number->format($service->id) ?></td>
+                            <td><?= h($service->sname) ?></td>
+                            <td><?= $this->Number->format($service->price) ?></td>
                            <td class="actions">
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $role->id],['class'=>'btn btn-primary']) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $role->id], ['confirm' => __('Are you sure you want to delete # {0}?', $role->id),'class'=>'btn btn-danger']) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $service->id],['class'=>'btn btn-primary']) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $service->id], ['confirm' => __('Are you sure you want to delete # {0}?', $service->id),'class'=>'btn btn-danger']) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

@@ -1,18 +1,14 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Role $role
+ * @var \App\Model\Entity\Service $service
  */
 ?>
-
 <!-- Content Header (Page header) -->
 <?= $this->element('Form/nav-top', [
-        'title' => 'Role',
-        'links' => [['class'=>'fa fa-list', 'title'=>'Role List', 'action'=>'index','method'=>'link'], ['class'=>'fa fa-remove', 'title'=>'Delete', 'action'=>'delete', 'method'=>'postlink','confirm'=>__('Are you sure you want to delete # {0}?', $role->id), 'id'=>$role->id],
+        'title' => 'Services',
+        'links' => [['class'=>'fa fa-list', 'title'=>'Services List', 'action'=>'index','method'=>'link']
         ]]);?>
-
-
-
 
 <!-- Main content -->
 <section class="content">
@@ -20,18 +16,18 @@
         <div class="col-md-12">
             <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Edit Roles</h3>
+                <h3 class="box-title">Add Service</h3>
             </div>
-            <?= $this->Form->create($role) ?>
+            <?= $this->Form->create($service) ?>
                 <fieldset>
                 <div class="box-body">
                     <div class="form-group">
-                        <?= $this->Form->control('rolename',['label'=>'Role Name', 'class'=>'form-control']);?>
+                        <?= $this->Form->control('sname',['label'=>'Service Name', 'class'=>'form-control']);?>
                     </div>
                     <div class="form-group">
-                        <?= $this->Form->control('actions._ids', ['options' => $actions, 'empty' => false, 'label'=>'Controller/Action','class'=>'form-control select2', 'multiple'=>'multiple', 'data-placeholder'=>"Pilih controller/action", 'style'=>'width: 100%;']);?>
+                        <?= $this->Form->control('price',['label'=>'Price', 'class'=>'form-control']);?>
                     </div>
-                </div>
+               </div>
                 </fieldset>
                 <div class="box-footer">
                     <?= $this->Form->button(__('Submit')) ?>
@@ -60,4 +56,4 @@ $(document).ready(function() {
 
 </script>
 <?php $this->end(); ?>
-
+</div>

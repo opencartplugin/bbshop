@@ -6,7 +6,7 @@
 ?>
 <?= $this->element('Form/nav-top', [
         'title' => 'Controller',
-        'links' => [['class'=>'fa fa-plus', 'title'=>'Tambah Controller', 'action'=>'add','method'=>'link']],
+        'links' => [['class'=>'fa fa-plus', 'title'=>'Add Controller', 'action'=>'add','method'=>'link']],
     ]
 );?>
 
@@ -17,7 +17,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                <h3 class="box-title">Daftar Controller</h3>
+                <h3 class="box-title">Controller List</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
@@ -25,7 +25,7 @@
                     <thead>
                     <tr>
                         <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('cname','Nama') ?></th>
+                        <th scope="col"><?= $this->Paginator->sort('cname','Controller Name') ?></th>
                         <th scope="col" class="actions"><?= __('Actions') ?></th>
                     </tr>
                     </thead>

@@ -6,7 +6,7 @@
 ?>
 <?= $this->element('Form/nav-top', [
         'title' => 'Action',
-        'links' => [['class'=>'fa fa-plus', 'title'=>'Tambah Action', 'action'=>'add','method'=>'link']],
+        'links' => [['class'=>'fa fa-plus', 'title'=>'Add Action', 'action'=>'add','method'=>'link']],
     ]
 );?>
 
@@ -17,7 +17,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                <h3 class="box-title">Daftar Action</h3>
+                <h3 class="box-title">Action List</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">

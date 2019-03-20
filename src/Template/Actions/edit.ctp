@@ -6,7 +6,7 @@
 ?>
 <?= $this->element('Form/nav-top', [
         'title' => 'Action',
-        'links' => [['class'=>'fa fa-list', 'title'=>'Daftar Action', 'action'=>'index', 'method'=>'link'],
+        'links' => [['class'=>'fa fa-list', 'title'=>'Action List', 'action'=>'index', 'method'=>'link'],
                     ['class'=>'fa fa-remove', 'title'=>'Delete', 'action'=>'delete', 'method'=>'postlink','confirm'=>__('Are you sure you want to delete # {0}?', $action->id), 'id'=>$action->id],
     ]]
 );?>
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="form-group">
-                    <?= $this->Form->control('aname',['label'=>'Nama Action']) ?>
+                    <?= $this->Form->control('aname',['label'=>'Action Name']) ?>
                 </div>
                 </fieldset>
                 <div class="box-footer">
