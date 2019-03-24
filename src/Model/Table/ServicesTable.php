@@ -34,7 +34,7 @@ class ServicesTable extends Table
         parent::initialize($config);
 
         $this->setTable('services');
-        $this->setDisplayField('id');
+        $this->setDisplayField('sname');
         $this->setPrimaryKey('id');
 
         $this->hasMany('JobServices', [
