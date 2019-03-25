@@ -40,7 +40,7 @@
                         <div class="col-sm-5 invoice-col">
                             <address>
                                 <strong>Date Time</strong><br>
-                                <?= $this->Form->control('trandate', ['type'=>'text', 'readonly'=>true, 'empty'=>false, 'label'=>false, 'class'=>'form-control', 'id'=>'trandate']) ?>
+                                <?= $this->Form->control('trandate', ['value' => date("Y-m-d h:i"),  'type'=>'text', 'readonly'=>true, 'empty'=>false, 'label'=>false, 'class'=>'form-control', 'id'=>'trandate']) ?>
                             </address>
                             <div class="info-box">
                                 <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
