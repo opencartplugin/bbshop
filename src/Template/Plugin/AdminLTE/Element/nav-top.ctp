@@ -1,5 +1,8 @@
 <?php use Cake\Core\Configure; ?>
 <nav class="navbar navbar-static-top">
+  <?php 
+      $photo = '/files/Users/photo/' . $this->getRequest()->getSession()->read('Auth.User.photo');
+  ?>
 
   <?php if (isset($layout) && $layout == 'top'): ?>
   <div class="container">
@@ -54,13 +57,13 @@
       <!-- User Account: style can be found in dropdown.less -->
       <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <?php echo $this->Html->image('foto.jpg', array('class' => 'user-image', 'alt' => 'User Image')); ?>
+          <?php echo $this->Html->image($photo, array('class' => 'user-image', 'alt' => 'User Image')); ?>
           <span class="hidden-xs"><?= $this->getRequest()->getSession()->read('Auth.User.name');?></span>
         </a>
         <ul class="dropdown-menu">
           <!-- User image -->
           <li class="user-header">
-            <?php echo $this->Html->image('foto.jpg', array('class' => 'img-circle', 'alt' => 'User Image')); ?>
+            <?php echo $this->Html->image($photo, array('class' => 'img-circle', 'alt' => 'User Image')); ?>
 
             <p>
             <?= $this->getRequest()->getSession()->read('Auth.User.name');?>

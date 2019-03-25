@@ -45,7 +45,7 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="<?php echo $this->Url->build('/jobs/index'); ?>"><i class="fa fa-check-circle-o"></i> Employee Work List</a></li>
+            <li><a href="<?php echo $this->Url->build('/jobs/add'); ?>"><i class="fa fa-check-circle-o"></i> Add Employee Work</a></li>
             <li><a href="<?php echo $this->Url->build('/purchases/index-arrivals'); ?>"><i class="fa fa-check-circle-o"></i> Report</a></li>
         </ul>
 

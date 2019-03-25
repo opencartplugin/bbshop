@@ -56,6 +56,8 @@ class Application extends BaseApplication
         }
         //frd
         $this->addPlugin('AdminLTE', ['bootstrap' => true, 'routes' => true]);
+        $this->addPlugin('Josegonzalez/Upload');
+        
     }
 
     /**

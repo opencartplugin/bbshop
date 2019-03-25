@@ -23,7 +23,7 @@ class JobsController extends AppController
         $this->paginate = [
             'contain' => ['Users', 'Customers', 'JobServices'=>['Services']]
         ];
-        $jobs = $this->paginate($this->Jobs);
+        $jobs = $this->paginate($this->Jobs->find()->where(['Jobs.user_id' => $this->request->getSession()->read('Auth.User.id')]));
         //debug($jobs);
         $this->set(compact('jobs'));
     }
@@ -75,10 +75,42 @@ class JobsController extends AppController
             }
             $this->Flash->error(__('The job could not be saved. Please, try again.'));
         }
+        $totamt = $this->Jobs->find()->where(['user_id'=>$loguser['id'], 'DATE(trandate) = CURDATE()'])->contain(['JobServices']);
+        $totday = 0;
+        foreach ($totamt as $rec) {
+            # code...
+            foreach ($rec->job_services as $value) {
+                # code...
+                $totday += $value->amount;
+            }
+        }
+        $totamt = $this->Jobs->find()->where(['user_id'=>$loguser['id'], 'MONTH(trandate) = MONTH(CURRENT_DATE())'])->contain(['JobServices']);
+        $totmonth = 0;
+        foreach ($totamt as $rec) {
+            # code...
+            foreach ($rec->job_services as $value) {
+                # code...
+                $totmonth += $value->amount;
+            }
+        }
+
+        $totamt = $this->Jobs->find()->where(['user_id'=>$loguser['id'], 'YEAR(trandate) = YEAR(CURRENT_DATE())'])->contain(['JobServices']);
+        $totyear = 0;
+        foreach ($totamt as $rec) {
+            # code...
+            foreach ($rec->job_services as $value) {
+                # code...
+                $totyear += $value->amount;
+            }
+        }
+
+
+
+        //debug($totamt->toArray()); 
         $users = $this->Jobs->Users->find('list', ['limit' => 200]);
         $customers = $this->Jobs->Customers->find('list', ['limit' => 200]);
         $services = $this->Jobs->JobServices->Services->find('list', ['limit' => 200]);
-        $this->set(compact('job', 'users', 'customers', 'services', 'loguser'));
+        $this->set(compact('job', 'users', 'customers', 'services', 'loguser', 'totday', 'totmonth', 'totyear'));
     }
 
     /**

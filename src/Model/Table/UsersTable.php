@@ -55,7 +55,50 @@ class UsersTable extends Table
 
 
         $this->addBehavior('Timestamp');
-    }
+
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'photo' => [
+                'fields' => [
+                    'dir' => 'photo_dir',
+                    'size' => 'photo_size',
+                    'type' => 'photo_type'
+                ],
+                'nameCallback' => function ($table, $entity, $data, $field, $settings) {
+                    return strtolower($data['name']);
+                },
+                'transformer' =>  function ($table, $entity, $data, $field, $settings) {
+                    $extension = pathinfo($data['name'], PATHINFO_EXTENSION);
+
+                    // Store the thumbnail in a temporary file
+                    $tmp = tempnam(sys_get_temp_dir(), 'upload') . '.' . $extension;
+
+                    // Use the Imagine library to DO THE THING
+                    $size = new \Imagine\Image\Box(40, 40);
+                    $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+                    $imagine = new \Imagine\Gd\Imagine();
+
+                    // Save that modified file to our temp file
+                    $imagine->open($data['tmp_name'])
+                        ->thumbnail($size, $mode)
+                        ->save($tmp);
+
+                    // Now return the original *and* the thumbnail
+                    return [
+                        $data['tmp_name'] => $data['name'],
+                        $tmp => 'thumbnail-' . $data['name'],
+                    ];
+                },
+                'deleteCallback' => function ($path, $entity, $field, $settings) {
+                    // When deleting the entity, both the original and the thumbnail will be removed
+                    // when keepFilesOnDelete is set to false
+                    return [
+                        $path . $entity->{$field},
+                        $path . 'thumbnail-' . $entity->{$field}
+                    ];
+                },
+                'keepFilesOnDelete' => false
+            ]
+        ]);   }
 
     /**
      * Default validation rules.
@@ -111,11 +154,11 @@ class UsersTable extends Table
             ->maxLength('phone', 30)
             ->allowEmptyString('phone');
 
-        $validator
+        /*$validator
             ->scalar('photo')
-            ->maxLength('photo', 100)
+            ->maxLength('photo', 255)
             ->allowEmptyString('photo');
-
+        */
 
         return $validator;
     }

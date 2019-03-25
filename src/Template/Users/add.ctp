@@ -18,7 +18,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Add Employee</h3>
             </div>
-            <?= $this->Form->create($user) ?>
+            <?= $this->Form->create($user, ['type' => 'file']) ?>
                 <fieldset>
                 <div class="box-body">
                         <?= $this->Form->control('name',['label'=>'Name', 'class'=>'form-control']);?>
@@ -27,7 +27,7 @@
                         <?= $this->Form->control('email',['label'=>'Email', 'class'=>'form-control']);?>
                         <?= $this->Form->control('birthdate', ['class' => 'form-control', 'type' => 'text', 'format' => 'Y-m-d', 'default' => date('Y-m-d'), 'value' => !empty($item->date) ? $item->date->format('Y-m-d') : date('Y-m-d')]);?>    
                         <?= $this->Form->control('birthplace',['label'=>'Birth Place', 'class'=>'form-control']);?>
-                        
+                        <?= $this->Form->control('photo',['label'=>'Photo', 'class'=>'form-control', 'type'=>'file']);?>
                         <?php $options = ['0' => 'Male', '1' => 'Female']; ?>
                         <div class="form-group input select">
                             <label class="control-label" for="gender">Gender</label>
